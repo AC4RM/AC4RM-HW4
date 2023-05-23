@@ -1,7 +1,8 @@
-from solution import *
+from homework import *
+import urllib.request
 import sqlite3
 import pandas as pd
-import requests
+import sklearn
 
 
 def test_python():
@@ -10,11 +11,7 @@ def test_python():
 
 
 def test_sql():
-    url = "https://docs.google.com/uc?export=download&id=1BzjCEmvPdi9PZnFGGl7L9N8wSITrrcWf"
-
-    with open('data.db', 'wb') as out_file:
-        content = requests.get(url).content
-        out_file.write(content)
+    urllib.request.urlretrieve('https://github.com/AC4RM/AC4RM-dataset/blob/main/sql/data.db?raw=true', 'data.db')
 
     con = sqlite3.connect('data.db')  # open a database file
 
@@ -23,3 +20,28 @@ def test_sql():
 
     assert customer_df_1['address'].shape[0] == 3
     assert customer_df_2['first_name'].to_list() == ['Clemmie', 'Elka', 'Freddi']
+
+
+def test_model():
+    model, scores = train_model()
+    assert isinstance(model, sklearn.neighbors._classification.KNeighborsClassifier)
+    assert len(scores) == 20
+    assert scores[0] > scores[-1]
+
+
+def test_regex():
+    assert extract_date('Post Date: 05/22/2023') == ['05', '22', '2023']
+    assert extract_date('01/01/1970') == ['01', '01', '1970']
+
+
+def test_monte_carlo():
+    results = []
+    np.random.seed(42)
+    for i in range(50):
+        result = simple_bettor_v4(10000, 3000, 200)
+        results.append(result)
+
+    assert all([len(x) == 201 for x in results])
+    assert sum([x[-1] <= 0 for x in results]) == 34
+
+
