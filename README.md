@@ -1,5 +1,5 @@
 ### Introduction
-- This the week 3 homework repository of ERMC K5455 (Applied Coding for Risk Mgmt) at Columbia University. 
+- This the week 4 homework repository of ERMC K5455 (Applied Coding for Risk Mgmt) at Columbia University. 
 - Please refer to Canvas for the homework deadline.
 
 <hr>
