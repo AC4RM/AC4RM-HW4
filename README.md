@@ -14,7 +14,7 @@
 3. We will be using the same Titanic dataset from [HW3](https://github.com/AC4RM/AC4RM-HW3), but we will train a KNN model this time
    - Follow the same preprocessing steps as HW3
    - Split the data into training and testing set (80/20) and use a random seed of 42
-   - For K value in `range(5, 200, 5)`, find the optimal K value that achieve the best accuracy score on the test set.
+   - For K value in `range(5, 200, 10)`, find the optimal K value that achieve the best accuracy score on the test set.
    - Return the model fitted using the optimal K and the array of all the test scores predicted with different K values.
 4. Define a function `extract_date(date)` using regex that will return the date, month and year of the input date in a list.
    - You can assume that the date format follows this pattern: `mm/dd/yyyy`
